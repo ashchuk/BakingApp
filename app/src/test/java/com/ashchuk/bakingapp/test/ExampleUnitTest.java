@@ -1,4 +1,4 @@
-package com.ashchuk.bakingapp;
+package com.ashchuk.bakingapp.test;
 
 import org.junit.Test;
 

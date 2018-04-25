@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.ashchuk.bakingapp.R;
 import com.ashchuk.bakingapp.dummy.DummyContent;
-import com.ashchuk.bakingapp.ui.RecipeDetailActivity;
-import com.ashchuk.bakingapp.ui.RecipeListActivity;
+import com.ashchuk.bakingapp.ui.activities.RecipeDetailActivity;
+import com.ashchuk.bakingapp.ui.activities.RecipeListActivity;
 
 /**
  * A fragment representing a single Recipe detail screen.
