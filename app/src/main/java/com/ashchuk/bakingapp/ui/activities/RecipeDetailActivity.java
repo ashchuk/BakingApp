@@ -11,7 +11,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.ashchuk.bakingapp.R;
+import com.ashchuk.bakingapp.mvp.views.RecipesView;
 import com.ashchuk.bakingapp.ui.fragments.RecipeDetailFragment;
 
 /**
@@ -20,7 +22,7 @@ import com.ashchuk.bakingapp.ui.fragments.RecipeDetailFragment;
  * item details are presented side-by-side with a list of items
  * in a {@link RecipeListActivity}.
  */
-public class RecipeDetailActivity extends AppCompatActivity {
+public class RecipeDetailActivity extends MvpAppCompatActivity implements RecipesView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

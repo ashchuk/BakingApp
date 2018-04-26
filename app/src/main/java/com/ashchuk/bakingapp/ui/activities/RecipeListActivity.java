@@ -14,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.ashchuk.bakingapp.R;
 import com.ashchuk.bakingapp.dummy.DummyContent;
+import com.ashchuk.bakingapp.mvp.views.RecipeListView;
 import com.ashchuk.bakingapp.ui.fragments.RecipeDetailFragment;
 
 import java.util.List;
@@ -28,7 +30,7 @@ import java.util.List;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class RecipeListActivity extends AppCompatActivity {
+public class RecipeListActivity extends MvpAppCompatActivity implements RecipeListView {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet

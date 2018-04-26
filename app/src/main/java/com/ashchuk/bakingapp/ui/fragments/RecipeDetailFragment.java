@@ -3,12 +3,12 @@ package com.ashchuk.bakingapp.ui.fragments;
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.ashchuk.bakingapp.R;
 import com.ashchuk.bakingapp.dummy.DummyContent;
 import com.ashchuk.bakingapp.ui.activities.RecipeDetailActivity;
@@ -20,7 +20,7 @@ import com.ashchuk.bakingapp.ui.activities.RecipeListActivity;
  * in two-pane mode (on tablets) or a {@link RecipeDetailActivity}
  * on handsets.
  */
-public class RecipeDetailFragment extends Fragment {
+public class RecipeDetailFragment extends MvpAppCompatFragment {
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
