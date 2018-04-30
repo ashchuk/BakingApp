@@ -1,7 +1,6 @@
 package com.ashchuk.bakingapp.ui.adapters;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +15,19 @@ import java.util.List;
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesViewHolder> {
 
     private List<Recipe> recipes;
+    private OnRecipeClickListener listener;
 
-    public RecipesAdapter(List<Recipe> recipes){ this.recipes = recipes; }
+    public RecipesAdapter(List<Recipe> recipes, OnRecipeClickListener listener) {
+        this.recipes = recipes;
+        this.listener = listener;
+    }
 
     @NonNull
     @Override
     public RecipesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recipe_item, parent, false);
-        return new RecipesViewHolder(view);
+        return new RecipesViewHolder(view, listener);
     }
 
     @Override

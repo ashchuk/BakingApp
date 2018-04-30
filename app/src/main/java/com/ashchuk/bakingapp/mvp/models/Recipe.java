@@ -3,61 +3,17 @@ package com.ashchuk.bakingapp.mvp.models;
 import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-// Generated using http://www.jsonschema2pojo.org/
+// Generated using Android Parcelable code generator
+// https://github.com/mcharmas/android-parcelable-intellij-plugin/
 
-public class Recipe implements Parcelable
-{
-
-    @SerializedName("id")
-    @Expose
+public class Recipe implements Parcelable {
     private Integer id;
-    @SerializedName("name")
-    @Expose
     private String name;
-    @SerializedName("ingredients")
-    @Expose
     private List<Ingredient> ingredients = null;
-    @SerializedName("steps")
-    @Expose
     private List<Step> steps = null;
-    @SerializedName("servings")
-    @Expose
     private Integer servings;
-    @SerializedName("image")
-    @Expose
     private String image;
-    public final static Parcelable.Creator<Recipe> CREATOR = new Creator<Recipe>() {
-
-
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public Recipe createFromParcel(Parcel in) {
-            return new Recipe(in);
-        }
-
-        public Recipe[] newArray(int size) {
-            return (new Recipe[size]);
-        }
-
-    }
-            ;
-
-    protected Recipe(Parcel in) {
-        this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.name = ((String) in.readValue((String.class.getClassLoader())));
-        in.readList(this.ingredients, (com.ashchuk.bakingapp.mvp.models.Ingredient.class.getClassLoader()));
-        in.readList(this.steps, (com.ashchuk.bakingapp.mvp.models.Step.class.getClassLoader()));
-        this.servings = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.image = ((String) in.readValue((String.class.getClassLoader())));
-    }
-
-    public Recipe() {
-    }
 
     public Integer getId() {
         return id;
@@ -107,17 +63,42 @@ public class Recipe implements Parcelable
         this.image = image;
     }
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(id);
-        dest.writeValue(name);
-        dest.writeList(ingredients);
-        dest.writeList(steps);
-        dest.writeValue(servings);
-        dest.writeValue(image);
-    }
-
+    @Override
     public int describeContents() {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.name);
+        dest.writeTypedList(this.ingredients);
+        dest.writeTypedList(this.steps);
+        dest.writeValue(this.servings);
+        dest.writeString(this.image);
+    }
+
+    public Recipe() {
+    }
+
+    protected Recipe(Parcel in) {
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.name = in.readString();
+        this.ingredients = in.createTypedArrayList(Ingredient.CREATOR);
+        this.steps = in.createTypedArrayList(Step.CREATOR);
+        this.servings = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.image = in.readString();
+    }
+
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel source) {
+            return new Recipe(source);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
 }
