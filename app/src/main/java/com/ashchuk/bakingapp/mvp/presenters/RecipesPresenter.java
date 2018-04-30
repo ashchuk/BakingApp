@@ -6,6 +6,7 @@ import com.ashchuk.bakingapp.BakingApp;
 import com.ashchuk.bakingapp.mvp.models.Recipe;
 import com.ashchuk.bakingapp.mvp.services.BakingAppService;
 import com.ashchuk.bakingapp.mvp.views.RecipesView;
+import com.ashchuk.bakingapp.ui.RecipesObserver;
 
 import org.reactivestreams.Subscriber;
 
@@ -28,38 +29,12 @@ public class RecipesPresenter extends MvpPresenter<RecipesView> {
 
         BakingApp.getAppComponent().inject(this);
 
-        Subscriber<List<Recipe>> subscriber;
-        Observer<List<Recipe>> observer = new Observer<List<Recipe>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
+        if (bakingAppService == null) return;
 
-            }
-
-            @Override
-            public void onNext(List<Recipe> recipes) {
-                getViewState().showRecipes(recipes);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
-
-        if (bakingAppService == null)
-            return;
-
+        Observer<List<Recipe>> observer = new RecipesObserver(getViewState());
         bakingAppService.getRecipes()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
-
-
-//        unsubscribeOnDestroy(disposable);
     }
 }
