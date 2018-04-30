@@ -13,8 +13,11 @@ import android.view.MenuItem;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.ashchuk.bakingapp.R;
+import com.ashchuk.bakingapp.mvp.models.Recipe;
 import com.ashchuk.bakingapp.mvp.views.RecipesView;
 import com.ashchuk.bakingapp.ui.fragments.RecipeDetailFragment;
+
+import java.util.List;
 
 /**
  * An activity representing a single Recipe detail screen. This
@@ -84,5 +87,10 @@ public class RecipeDetailActivity extends MvpAppCompatActivity implements Recipe
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showRecipes(List<Recipe> recipes) {
+
     }
 }
