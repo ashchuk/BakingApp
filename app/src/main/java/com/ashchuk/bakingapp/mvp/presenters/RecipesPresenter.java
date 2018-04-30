@@ -8,15 +8,12 @@ import com.ashchuk.bakingapp.mvp.services.BakingAppService;
 import com.ashchuk.bakingapp.mvp.views.RecipesView;
 import com.ashchuk.bakingapp.ui.RecipesObserver;
 
-import org.reactivestreams.Subscriber;
-
 import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 @InjectViewState

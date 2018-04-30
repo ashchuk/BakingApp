@@ -10,4 +10,7 @@ import java.util.List;
 public interface RecipesView extends MvpView {
     @StateStrategyType(AddToEndSingleStrategy.class)
     void showRecipes(List<Recipe> recipes);
+
+    @StateStrategyType(AddToEndSingleStrategy.class)
+    void showErrorMessage(String message);
 }

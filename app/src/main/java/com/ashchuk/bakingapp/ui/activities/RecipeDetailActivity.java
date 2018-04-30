@@ -93,4 +93,9 @@ public class RecipeDetailActivity extends MvpAppCompatActivity implements Recipe
     public void showRecipes(List<Recipe> recipes) {
 
     }
+
+    @Override
+    public void showErrorMessage(String message) {
+
+    }
 }
