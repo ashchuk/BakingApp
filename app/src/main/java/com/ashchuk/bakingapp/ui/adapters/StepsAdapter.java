@@ -13,11 +13,11 @@ import com.ashchuk.bakingapp.mvp.models.Step;
 import com.ashchuk.bakingapp.ui.activities.RecipeDetailActivity;
 import com.ashchuk.bakingapp.ui.activities.RecipeListActivity;
 import com.ashchuk.bakingapp.ui.fragments.RecipeDetailFragment;
-import com.ashchuk.bakingapp.ui.viewholders.RecipeStepsViewHolder;
+import com.ashchuk.bakingapp.ui.viewholders.StepsViewHolder;
 
 import java.util.List;
 
-public class RecipeStepsAdapter extends RecyclerView.Adapter<RecipeStepsViewHolder> {
+public class StepsAdapter extends RecyclerView.Adapter<StepsViewHolder> {
 
     private final RecipeListActivity mParentActivity;
     private final List<Step> mValues;
@@ -28,7 +28,6 @@ public class RecipeStepsAdapter extends RecyclerView.Adapter<RecipeStepsViewHold
             Step item = (Step) view.getTag();
             if (mTwoPane) {
                 Bundle arguments = new Bundle();
-                arguments.putInt(RecipeDetailFragment.ARG_ITEM_ID, item.getId());
                 arguments.putParcelable("step", item);
                 RecipeDetailFragment fragment = new RecipeDetailFragment();
                 fragment.setArguments(arguments);
@@ -38,30 +37,29 @@ public class RecipeStepsAdapter extends RecyclerView.Adapter<RecipeStepsViewHold
             } else {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, RecipeDetailActivity.class);
-                intent.putExtra(RecipeDetailFragment.ARG_ITEM_ID, item.getId());
                 intent.putExtra("step", item);
                 context.startActivity(intent);
             }
         }
     };
 
-    public RecipeStepsAdapter(RecipeListActivity parent,
-                              List<Step> items,
-                              boolean twoPane) {
+    public StepsAdapter(RecipeListActivity parent,
+                        List<Step> items,
+                        boolean twoPane) {
         mValues = items;
         mParentActivity = parent;
         mTwoPane = twoPane;
     }
 
     @Override
-    public RecipeStepsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public StepsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recipe_list_content, parent, false);
-        return new RecipeStepsViewHolder(view);
+        return new StepsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final RecipeStepsViewHolder holder, int position) {
+    public void onBindViewHolder(final StepsViewHolder holder, int position) {
         holder.mIdView.setText(mValues.get(position).getShortDescription());
         holder.mContentView.setText(mValues.get(position).getDescription());
 

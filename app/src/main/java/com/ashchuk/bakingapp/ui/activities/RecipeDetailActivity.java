@@ -25,13 +25,6 @@ public class RecipeDetailActivity extends MvpAppCompatActivity implements Recipe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
-        Toolbar toolbar = findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
-
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -41,10 +34,7 @@ public class RecipeDetailActivity extends MvpAppCompatActivity implements Recipe
         if (savedInstanceState == null) {
 
             Bundle arguments = new Bundle();
-            arguments.putString(RecipeDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(RecipeDetailFragment.ARG_ITEM_ID));
-            arguments.putParcelable("step",
-                    getIntent().getParcelableExtra("step"));
+            arguments.putParcelable("step", getIntent().getParcelableExtra("step"));
             RecipeDetailFragment fragment = new RecipeDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()

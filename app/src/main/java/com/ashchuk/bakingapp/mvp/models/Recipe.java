@@ -4,15 +4,30 @@ import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 // Generated using Android Parcelable code generator
 // https://github.com/mcharmas/android-parcelable-intellij-plugin/
 
 public class Recipe implements Parcelable {
+    @Expose
+    @SerializedName("id")
     private Integer id;
+    @Expose
+    @SerializedName("name")
     private String name;
+    @Expose
+    @SerializedName("ingredients")
     private List<Ingredient> ingredients = null;
+    @Expose
+    @SerializedName("steps")
     private List<Step> steps = null;
+    @Expose
+    @SerializedName("servings")
     private Integer servings;
+    @Expose
+    @SerializedName("image")
     private String image;
 
     public Integer getId() {

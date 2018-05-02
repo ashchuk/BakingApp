@@ -12,20 +12,14 @@
     android:showDividers="middle"
     tools:context=".ui.activities.RecipeListActivity">
 
-    <!--
-    This layout is a two-pane layout for the Recipes
-    master/detail flow.
-    
-    -->
-
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/recipe_list"
         android:name="com.ashchuk.bakingapp.RecipeListFragment"
         android:layout_width="@dimen/item_width"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:context="com.ashchuk.bakingapp.ui.activities.RecipeListActivity"
         tools:listitem="@layout/recipe_list_content" />

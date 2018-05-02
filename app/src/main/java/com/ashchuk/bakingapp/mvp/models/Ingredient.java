@@ -3,16 +3,30 @@ package com.ashchuk.bakingapp.mvp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 // Generated using Android Parcelable code generator
 // https://github.com/mcharmas/android-parcelable-intellij-plugin/
 
 public class Ingredient implements Parcelable
 {
-    public Double getQuantity() {
+
+    @Expose
+    @SerializedName("quantity")
+    private float quantity;
+    @Expose
+    @SerializedName("measure")
+    private String measure;
+    @Expose
+    @SerializedName("ingredient")
+    private String ingredient;
+
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 
@@ -32,9 +46,6 @@ public class Ingredient implements Parcelable
         this.ingredient = ingredient;
     }
 
-    private Double quantity;
-    private String measure;
-    private String ingredient;
 
     @Override
     public int describeContents() {
@@ -52,7 +63,7 @@ public class Ingredient implements Parcelable
     }
 
     protected Ingredient(Parcel in) {
-        this.quantity = (Double) in.readValue(Double.class.getClassLoader());
+        this.quantity = (float) in.readValue(Double.class.getClassLoader());
         this.measure = in.readString();
         this.ingredient = in.readString();
     }

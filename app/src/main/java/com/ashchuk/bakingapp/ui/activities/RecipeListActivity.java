@@ -12,7 +12,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.ashchuk.bakingapp.R;
 import com.ashchuk.bakingapp.mvp.models.Recipe;
 import com.ashchuk.bakingapp.mvp.views.RecipeListView;
-import com.ashchuk.bakingapp.ui.adapters.RecipeStepsAdapter;
+import com.ashchuk.bakingapp.ui.adapters.StepsAdapter;
 
 import java.util.Objects;
 
@@ -45,6 +45,6 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new RecipeStepsAdapter(this, recipe.getSteps(), mTwoPane));
+        recyclerView.setAdapter(new StepsAdapter(this, recipe.getSteps(), mTwoPane));
     }
 }

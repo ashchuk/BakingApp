@@ -6,11 +6,11 @@ import android.widget.TextView;
 
 import com.ashchuk.bakingapp.R;
 
-public class RecipeStepsViewHolder extends RecyclerView.ViewHolder {
+public class StepsViewHolder extends RecyclerView.ViewHolder {
     public TextView mIdView;
     public TextView mContentView;
 
-    public RecipeStepsViewHolder(View view) {
+    public StepsViewHolder(View view) {
         super(view);
         mIdView = view.findViewById(R.id.id_text);
         mContentView = view.findViewById(R.id.content);
