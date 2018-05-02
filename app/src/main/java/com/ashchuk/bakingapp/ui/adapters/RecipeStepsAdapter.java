@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ashchuk.bakingapp.R;
-import com.ashchuk.bakingapp.dummy.DummyContent;
 import com.ashchuk.bakingapp.mvp.models.Step;
 import com.ashchuk.bakingapp.ui.activities.RecipeDetailActivity;
 import com.ashchuk.bakingapp.ui.activities.RecipeListActivity;
@@ -26,10 +25,11 @@ public class RecipeStepsAdapter extends RecyclerView.Adapter<RecipeStepsViewHold
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+            Step item = (Step) view.getTag();
             if (mTwoPane) {
                 Bundle arguments = new Bundle();
-                arguments.putString(RecipeDetailFragment.ARG_ITEM_ID, item.id);
+                arguments.putInt(RecipeDetailFragment.ARG_ITEM_ID, item.getId());
+                arguments.putParcelable("step", item);
                 RecipeDetailFragment fragment = new RecipeDetailFragment();
                 fragment.setArguments(arguments);
                 mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -38,8 +38,8 @@ public class RecipeStepsAdapter extends RecyclerView.Adapter<RecipeStepsViewHold
             } else {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, RecipeDetailActivity.class);
-                intent.putExtra(RecipeDetailFragment.ARG_ITEM_ID, item.id);
-
+                intent.putExtra(RecipeDetailFragment.ARG_ITEM_ID, item.getId());
+                intent.putExtra("step", item);
                 context.startActivity(intent);
             }
         }

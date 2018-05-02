@@ -10,13 +10,11 @@ import android.view.View;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.ashchuk.bakingapp.R;
-import com.ashchuk.bakingapp.dummy.DummyContent;
 import com.ashchuk.bakingapp.mvp.models.Recipe;
 import com.ashchuk.bakingapp.mvp.views.RecipeListView;
 import com.ashchuk.bakingapp.ui.adapters.RecipeStepsAdapter;
 
-import java.io.Serializable;
-import java.util.Observer;
+import java.util.Objects;
 
 public class RecipeListActivity extends MvpAppCompatActivity implements RecipeListView {
 
@@ -27,7 +25,7 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
 
-        recipe = getIntent().getExtras().getParcelable("recipe");
+        recipe = Objects.requireNonNull(getIntent().getExtras()).getParcelable("recipe");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
