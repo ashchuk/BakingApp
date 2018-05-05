@@ -8,11 +8,9 @@ import com.ashchuk.bakingapp.R;
 
 public class IngredientsViewHolder extends RecyclerView.ViewHolder {
     public TextView mIdView;
-    public TextView mContentView;
 
     public IngredientsViewHolder(View view) {
         super(view);
         mIdView = view.findViewById(R.id.id_text);
-        mContentView = view.findViewById(R.id.content);
     }
 }

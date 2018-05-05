@@ -2,9 +2,11 @@ package com.ashchuk.bakingapp.ui.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -33,11 +35,14 @@ public class RecipesActivity extends MvpAppCompatActivity implements RecipesView
 
     private AlertDialog errorDialog;
 
+    private Integer spanCount = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
         ButterKnife.bind(this);
+        spanCount = this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? 1 : 2;
     }
 
     @Override
@@ -48,7 +53,7 @@ public class RecipesActivity extends MvpAppCompatActivity implements RecipesView
             intent.putExtra("test", "test");
             startActivity(intent);
         }));
-        recipesView.setLayoutManager(new LinearLayoutManager(RecipesActivity.this));
+        recipesView.setLayoutManager(new GridLayoutManager(RecipesActivity.this, spanCount));
     }
 
     @Override

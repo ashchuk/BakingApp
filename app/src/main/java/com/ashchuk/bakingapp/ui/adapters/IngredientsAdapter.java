@@ -29,7 +29,6 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsViewHold
     @Override
     public void onBindViewHolder(final IngredientsViewHolder holder, int position) {
         holder.mIdView.setText(mIngredients.get(position).getIngredient());
-        holder.mContentView.setText(mIngredients.get(position).describeContents());
         holder.itemView.setTag(mIngredients.get(position));
     }
 

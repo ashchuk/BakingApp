@@ -31,10 +31,6 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
-
         if (findViewById(R.id.recipe_detail_container) != null) {
             mTwoPane = true;
         }
