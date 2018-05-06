@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,9 @@ import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.ashchuk.bakingapp.R;
+import com.ashchuk.bakingapp.mvp.models.Ingredient;
 import com.ashchuk.bakingapp.mvp.models.Step;
+import com.ashchuk.bakingapp.ui.adapters.IngredientsAdapter;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -23,10 +27,15 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 
+import java.util.List;
+
 public class RecipeDetailFragment extends MvpAppCompatFragment {
 
     private Step step;
+    private List<Ingredient> ingredients;
     private SimpleExoPlayer mExoPlayer;
+
+    private RecyclerView ingredientsView;
 
     public RecipeDetailFragment() {
     }
@@ -43,6 +52,9 @@ public class RecipeDetailFragment extends MvpAppCompatFragment {
 
         if (getArguments().containsKey("step")) {
             step = getArguments().getParcelable("step");
+        }
+        if (getArguments().containsKey("ingredients")) {
+            ingredients = getArguments().getParcelableArrayList("ingredients");
         }
     }
 
@@ -62,6 +74,12 @@ public class RecipeDetailFragment extends MvpAppCompatFragment {
         Activity activity = this.getActivity();
 
         PlayerView playerView = activity.findViewById(R.id.video_view);
+        ingredientsView = activity.findViewById(R.id.rvIngredients);
+
+        ingredientsView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext(),
+                LinearLayoutManager.HORIZONTAL,
+                false));
+        ingredientsView.setAdapter(new IngredientsAdapter(ingredients));
 
         mExoPlayer = ExoPlayerFactory.newSimpleInstance(
                 new DefaultRenderersFactory(getContext()),

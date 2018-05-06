@@ -50,7 +50,6 @@ public class RecipesActivity extends MvpAppCompatActivity implements RecipesView
         recipesView.setAdapter(new RecipesAdapter(recipes, (v, recipe) -> {
             Intent intent = new Intent(RecipesActivity.this, RecipeListActivity.class);
             intent.putExtra("recipe", recipe);
-            intent.putExtra("test", "test");
             startActivity(intent);
         }));
         recipesView.setLayoutManager(new GridLayoutManager(RecipesActivity.this, spanCount));

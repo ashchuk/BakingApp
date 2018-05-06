@@ -35,6 +35,7 @@ public class RecipeDetailActivity extends MvpAppCompatActivity implements Recipe
 
             Bundle arguments = new Bundle();
             arguments.putParcelable("step", getIntent().getParcelableExtra("step"));
+            arguments.putParcelableArrayList("ingredients", getIntent().getParcelableArrayListExtra("ingredients"));
             RecipeDetailFragment fragment = new RecipeDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()

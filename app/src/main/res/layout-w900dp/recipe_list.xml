@@ -12,17 +12,34 @@
     android:showDividers="middle"
     tools:context=".ui.activities.RecipeListActivity">
 
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/recipe_list"
-        android:name="com.ashchuk.bakingapp.RecipeListFragment"
+    <LinearLayout
         android:layout_width="@dimen/item_width"
         android:layout_height="match_parent"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:context="com.ashchuk.bakingapp.ui.activities.RecipeListActivity"
-        tools:listitem="@layout/recipe_list_content" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/steps_label"
+            android:textSize="25sp"
+            tools:text="Steps" />
+
+        <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/recipe_list"
+            android:name="com.ashchuk.bakingapp.RecipeListFragment"
+            android:layout_width="@dimen/item_width"
+            android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            tools:context="com.ashchuk.bakingapp.ui.activities.RecipeListActivity"
+            tools:listitem="@layout/recipe_list_content" />
+
+    </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/recipe_detail_container"

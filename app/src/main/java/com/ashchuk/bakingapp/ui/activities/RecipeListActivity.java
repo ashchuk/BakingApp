@@ -41,6 +41,6 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new StepsAdapter(this, recipe.getSteps(), mTwoPane));
+        recyclerView.setAdapter(new StepsAdapter(this, recipe.getSteps(), mTwoPane, recipe.getIngredients()));
     }
 }

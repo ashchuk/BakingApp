@@ -22,13 +22,15 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsViewHold
     @Override
     public IngredientsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recipe_list_content, parent, false);
+                .inflate(R.layout.item_ingredient, parent, false);
         return new IngredientsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final IngredientsViewHolder holder, int position) {
-        holder.mIdView.setText(mIngredients.get(position).getIngredient());
+        holder.ingredientNameTv.setText(mIngredients.get(position).getIngredient());
+        holder.ingredientQuantityTv.setText("Quantity: " + Float.toString(mIngredients.get(position).getQuantity()));
+        holder.ingredientMeasureTv.setText("Measure: " + mIngredients.get(position).getMeasure());
         holder.itemView.setTag(mIngredients.get(position));
     }
 
