@@ -5,4 +5,6 @@
     <string name="ingredients_label">Ingredients</string>
     <string name="steps_label">Steps</string>
     <string name="step_details_label">Step details</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>
