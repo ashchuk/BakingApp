@@ -59,6 +59,16 @@ public class RecipeDetailFragment extends MvpAppCompatFragment {
     }
 
     @Override
+    public void onDestroy() {
+        if (mExoPlayer != null) {
+            mExoPlayer.stop();
+            mExoPlayer.release();
+            mExoPlayer = null;
+        }
+        super.onDestroy();
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.recipe_detail, container, false);
