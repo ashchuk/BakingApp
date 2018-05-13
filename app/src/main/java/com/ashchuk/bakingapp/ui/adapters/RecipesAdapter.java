@@ -15,11 +15,17 @@ import java.util.List;
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesViewHolder> {
 
     private List<Recipe> recipes;
-    private OnRecipeClickListener listener;
+    private OnRecipeClickListener clickListener;
+    private OnRecipeAddListener addListener;
+    private OnRecipeRemoveListener removeListener;
 
-    public RecipesAdapter(List<Recipe> recipes, OnRecipeClickListener listener) {
+    public RecipesAdapter(List<Recipe> recipes, OnRecipeClickListener clickListener,
+                          OnRecipeAddListener addListener,
+                          OnRecipeRemoveListener removeListener) {
         this.recipes = recipes;
-        this.listener = listener;
+        this.clickListener = clickListener;
+        this.addListener = addListener;
+        this.removeListener = removeListener;
     }
 
     @NonNull
@@ -27,7 +33,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesViewHolder> {
     public RecipesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recipe_item, parent, false);
-        return new RecipesViewHolder(view, listener);
+        return new RecipesViewHolder(view, clickListener, addListener, removeListener);
     }
 
     @Override

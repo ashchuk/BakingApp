@@ -13,13 +13,12 @@ import net.simonvt.schematic.annotation.TableEndpoint;
 public class BakingAppContentProvider {
     static final String AUTHORITY = "com.ashchuk.bakingapp.data.provider";
 
-
     @TableEndpoint(table = BakingAppDatabase.TABLE_NAME)
     public static class BakingIngredients {
 
         @ContentUri(
-                path = "ingredients",
-                type = "vnd.android.cursor.dir/ingredients")
-        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/ingredients");
+                path = "recipes",
+                type = "vnd.android.cursor.dir/recipes")
+        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/recipes");
     }
 }

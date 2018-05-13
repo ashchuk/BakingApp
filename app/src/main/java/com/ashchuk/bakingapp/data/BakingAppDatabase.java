@@ -10,5 +10,5 @@ class BakingAppDatabase {
     static final int VERSION = 1;
 
     @Table(BakingAppContract.class)
-    static final String TABLE_NAME = "baking_ingredients";
+    static final String TABLE_NAME = "recipes";
 }

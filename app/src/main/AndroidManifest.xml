@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ashchuk.bakingapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,8 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
 
         <activity android:name=".ui.activities.RecipesActivity">
             <intent-filter>
@@ -46,6 +45,18 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/new_app_widget_info" />
         </receiver>
+
+        <provider
+            android:name=".data.generated.BakingAppContentProvider"
+            android:authorities="com.ashchuk.bakingapp.data.provider"
+            android:exported="true"
+            android:syncable="true"
+            tools:ignore="ExportedContentProvider" />
+
+        <service
+            android:name=".ui.widget.GridWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
     </application>
 
 </manifest>

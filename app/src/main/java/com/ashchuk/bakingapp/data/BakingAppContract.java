@@ -7,7 +7,7 @@ import net.simonvt.schematic.annotation.NotNull;
 import net.simonvt.schematic.annotation.PrimaryKey;
 import net.simonvt.schematic.annotation.UniqueConstraint;
 
-@UniqueConstraint(columns = {BakingAppContract.COLUMN_INGREDIENT_NAME}, onConflict = ConflictResolutionType.ABORT)
+@UniqueConstraint(columns = {BakingAppContract.COLUMN_RECIPE_NAME}, onConflict = ConflictResolutionType.ABORT)
 public class BakingAppContract {
     @DataType(DataType.Type.INTEGER)
     @PrimaryKey(onConflict = ConflictResolutionType.REPLACE)
@@ -16,9 +16,9 @@ public class BakingAppContract {
 
     @DataType(DataType.Type.TEXT)
     @NotNull
-    public static final String COLUMN_INGREDIENT_NAME = "ingredientName";
+    public static final String COLUMN_RECIPE_NAME = "recipeName";
 
     @DataType(DataType.Type.TEXT)
     @NotNull
-    public static final String COLUMN_INGREDIENT_QUANTITY = "ingredientQuantity";
+    public static final String COLUMN_SERIALIZED_RECIPE = "serialized_recipe";
 }
