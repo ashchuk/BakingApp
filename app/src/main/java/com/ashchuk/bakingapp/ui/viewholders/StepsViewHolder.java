@@ -6,11 +6,15 @@ import android.widget.TextView;
 
 import com.ashchuk.bakingapp.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StepsViewHolder extends RecyclerView.ViewHolder {
+    @BindView(R.id.id_text)
     public TextView mIdView;
 
     public StepsViewHolder(View view) {
         super(view);
-        mIdView = view.findViewById(R.id.id_text);
+        ButterKnife.bind(this, view);
     }
 }

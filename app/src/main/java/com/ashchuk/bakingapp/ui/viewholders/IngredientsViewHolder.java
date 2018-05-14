@@ -6,15 +6,19 @@ import android.widget.TextView;
 
 import com.ashchuk.bakingapp.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class IngredientsViewHolder extends RecyclerView.ViewHolder {
+    @BindView(R.id.ingredient_name_tv)
     public TextView ingredientNameTv;
+    @BindView(R.id.ingredient_measure_tv)
     public TextView ingredientMeasureTv;
+    @BindView(R.id.ingredient_quantity_tv)
     public TextView ingredientQuantityTv;
 
     public IngredientsViewHolder(View view) {
         super(view);
-        ingredientNameTv = view.findViewById(R.id.ingredient_name_tv);
-        ingredientMeasureTv = view.findViewById(R.id.ingredient_measure_tv);
-        ingredientQuantityTv = view.findViewById(R.id.ingredient_quantity_tv);
+        ButterKnife.bind(this, view);
     }
 }

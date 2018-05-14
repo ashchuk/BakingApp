@@ -21,6 +21,9 @@ import com.ashchuk.bakingapp.ui.viewholders.StepsViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ashchuk.bakingapp.tools.Constants.INGREDIENTS_KEY;
+import static com.ashchuk.bakingapp.tools.Constants.STEP_KEY;
+
 public class StepsAdapter extends RecyclerView.Adapter<StepsViewHolder> {
 
     private final RecipeListActivity mParentActivity;
@@ -35,8 +38,8 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsViewHolder> {
             Step item = (Step) view.getTag();
             if (mTwoPane) {
                 Bundle arguments = new Bundle();
-                arguments.putParcelable("step", item);
-                arguments.putParcelableArrayList("ingredients", (ArrayList<? extends Parcelable>) ingredients);
+                arguments.putParcelable(STEP_KEY, item);
+                arguments.putParcelableArrayList(INGREDIENTS_KEY, (ArrayList<? extends Parcelable>) ingredients);
                 RecipeDetailFragment fragment = new RecipeDetailFragment();
                 fragment.setArguments(arguments);
                 mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -45,8 +48,8 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsViewHolder> {
             } else {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, RecipeDetailActivity.class);
-                intent.putExtra("step", item);
-                intent.putParcelableArrayListExtra("ingredients", (ArrayList<? extends Parcelable>) ingredients);
+                intent.putExtra(STEP_KEY, item);
+                intent.putParcelableArrayListExtra(INGREDIENTS_KEY, (ArrayList<? extends Parcelable>) ingredients);
                 context.startActivity(intent);
             }
         }

@@ -29,20 +29,32 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static com.ashchuk.bakingapp.tools.Constants.INGREDIENTS_KEY;
+import static com.ashchuk.bakingapp.tools.Constants.STEP_KEY;
+
 public class RecipeDetailFragment extends MvpAppCompatFragment {
 
     private Step step;
     private List<Ingredient> ingredients;
     private SimpleExoPlayer mExoPlayer;
 
-    private RecyclerView ingredientsView;
+    private final String USER_AGENT = "exoplayer-bakingapp";
+
+    @BindView(R.id.video_view)
+    PlayerView playerView;
+
+    @BindView(R.id.rvIngredients)
+    RecyclerView ingredientsView;
 
     public RecipeDetailFragment() {
     }
 
     private MediaSource buildMediaSource(
             Uri uri) {
-        return new ExtractorMediaSource.Factory(new DefaultHttpDataSourceFactory("exoplayer-bakingapp"))
+        return new ExtractorMediaSource.Factory(new DefaultHttpDataSourceFactory(USER_AGENT))
                 .createMediaSource(uri, null, null);
     }
 
@@ -50,11 +62,12 @@ public class RecipeDetailFragment extends MvpAppCompatFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments().containsKey("step")) {
-            step = getArguments().getParcelable("step");
+        assert getArguments() != null;
+        if (getArguments().containsKey(STEP_KEY)) {
+            step = getArguments().getParcelable(STEP_KEY);
         }
-        if (getArguments().containsKey("ingredients")) {
-            ingredients = getArguments().getParcelableArrayList("ingredients");
+        if (getArguments().containsKey(INGREDIENTS_KEY)) {
+            ingredients = getArguments().getParcelableArrayList(INGREDIENTS_KEY);
         }
     }
 
@@ -83,8 +96,7 @@ public class RecipeDetailFragment extends MvpAppCompatFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Activity activity = this.getActivity();
 
-        PlayerView playerView = activity.findViewById(R.id.video_view);
-        ingredientsView = activity.findViewById(R.id.rvIngredients);
+        ButterKnife.bind(this, view);
 
         ingredientsView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,

@@ -19,6 +19,9 @@ import com.ashchuk.bakingapp.ui.fragments.RecipeDetailFragment;
 
 import java.util.List;
 
+import static com.ashchuk.bakingapp.tools.Constants.INGREDIENTS_KEY;
+import static com.ashchuk.bakingapp.tools.Constants.STEP_KEY;
+
 public class RecipeDetailActivity extends MvpAppCompatActivity implements RecipesView {
 
     @Override
@@ -34,8 +37,8 @@ public class RecipeDetailActivity extends MvpAppCompatActivity implements Recipe
         if (savedInstanceState == null) {
 
             Bundle arguments = new Bundle();
-            arguments.putParcelable("step", getIntent().getParcelableExtra("step"));
-            arguments.putParcelableArrayList("ingredients", getIntent().getParcelableArrayListExtra("ingredients"));
+            arguments.putParcelable(STEP_KEY, getIntent().getParcelableExtra(STEP_KEY));
+            arguments.putParcelableArrayList(INGREDIENTS_KEY, getIntent().getParcelableArrayListExtra(INGREDIENTS_KEY));
             RecipeDetailFragment fragment = new RecipeDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()

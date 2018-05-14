@@ -36,6 +36,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.ashchuk.bakingapp.tools.Constants.RECIPE_KEY;
+
 public class RecipesActivity extends MvpAppCompatActivity implements RecipesView {
 
     @BindView(R.id.recipes_rv)
@@ -43,8 +45,6 @@ public class RecipesActivity extends MvpAppCompatActivity implements RecipesView
 
     @InjectPresenter
     RecipesPresenter recipesPresenter;
-
-    private AlertDialog errorDialog;
 
     private Integer spanCount = 2;
 
@@ -61,7 +61,7 @@ public class RecipesActivity extends MvpAppCompatActivity implements RecipesView
         recipesView.setAdapter(new RecipesAdapter(recipes,
                 (v, recipe) -> {
                     Intent intent = new Intent(RecipesActivity.this, RecipeListActivity.class);
-                    intent.putExtra("recipe", recipe);
+                    intent.putExtra(RECIPE_KEY, recipe);
                     startActivity(intent);
                 },
                 (v, recipe) -> {

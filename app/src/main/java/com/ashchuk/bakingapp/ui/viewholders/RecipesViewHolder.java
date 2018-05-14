@@ -11,19 +11,26 @@ import com.ashchuk.bakingapp.ui.adapters.OnRecipeAddListener;
 import com.ashchuk.bakingapp.ui.adapters.OnRecipeClickListener;
 import com.ashchuk.bakingapp.ui.adapters.OnRecipeRemoveListener;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class RecipesViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView cakeNameTV;
+    @BindView(R.id.cake_name_tv)
+    public TextView cakeNameTV;
+    @BindView(R.id.add_recipe_button)
+    public ImageButton addRecipeButton;
+    @BindView(R.id.remove_recipe_button)
+    public ImageButton removeRecipeButton;
+
     private Recipe recipe;
 
     public RecipesViewHolder(View itemView, OnRecipeClickListener clickListener,
                              OnRecipeAddListener addListener,
                              OnRecipeRemoveListener removeListener) {
         super(itemView);
-        cakeNameTV = itemView.findViewById(R.id.cake_name_tv);
-        ImageButton addRecipeButton = itemView.findViewById(R.id.add_recipe_button);
-        ImageButton removeRecipeButton = itemView.findViewById(R.id.remove_recipe_button);
+        ButterKnife.bind(this, itemView);
 
         itemView.setOnClickListener(v -> clickListener.onClick(itemView, recipe));
         addRecipeButton.setOnClickListener(v -> addListener.onClick(itemView, recipe));
