@@ -8,29 +8,21 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.ashchuk.bakingapp.BakingApp;
 import com.ashchuk.bakingapp.R;
 import com.ashchuk.bakingapp.data.BakingAppContentProvider;
 import com.ashchuk.bakingapp.data.BakingAppContract;
 import com.ashchuk.bakingapp.mvp.models.Recipe;
 import com.ashchuk.bakingapp.mvp.presenters.RecipesPresenter;
 import com.ashchuk.bakingapp.mvp.views.RecipesView;
-import com.ashchuk.bakingapp.ui.adapters.OnRecipeClickListener;
 import com.ashchuk.bakingapp.ui.adapters.RecipesAdapter;
 import com.ashchuk.bakingapp.ui.widget.BakingAppWidgetProvider;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,8 +35,6 @@ public class RecipesActivity extends MvpAppCompatActivity implements RecipesView
 
     @InjectPresenter
     RecipesPresenter recipesPresenter;
-
-    private AlertDialog errorDialog;
 
     private Integer spanCount = 2;
 

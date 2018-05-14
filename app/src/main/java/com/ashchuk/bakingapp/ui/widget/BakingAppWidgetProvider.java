@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 
 import com.ashchuk.bakingapp.R;
-import com.ashchuk.bakingapp.ui.activities.RecipeListActivity;
 import com.ashchuk.bakingapp.ui.activities.RecipesActivity;
 
 import java.util.Objects;

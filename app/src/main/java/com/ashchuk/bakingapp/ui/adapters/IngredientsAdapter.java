@@ -1,5 +1,6 @@
 package com.ashchuk.bakingapp.ui.adapters;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +20,16 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsViewHold
         mIngredients = items;
     }
 
+    @NonNull
     @Override
-    public IngredientsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public IngredientsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_ingredient, parent, false);
         return new IngredientsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final IngredientsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final IngredientsViewHolder holder, int position) {
         holder.ingredientNameTv.setText(mIngredients.get(position).getIngredient());
         holder.ingredientQuantityTv.setText("Quantity: " + Float.toString(mIngredients.get(position).getQuantity()));
         holder.ingredientMeasureTv.setText("Measure: " + mIngredients.get(position).getMeasure());

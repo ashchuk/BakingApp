@@ -5,7 +5,6 @@ import com.ashchuk.bakingapp.mvp.models.Recipe;
 
 import java.util.List;
 
-import dagger.Provides;
 import io.reactivex.Observable;
 
 public class BakingAppService {

@@ -67,14 +67,14 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsViewHolder> {
 
     @NonNull
     @Override
-    public StepsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public StepsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recipe_list_content, parent, false);
         return new StepsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final StepsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final StepsViewHolder holder, int position) {
         holder.mIdView.setText(mValues.get(position).getShortDescription());
         holder.itemView.setTag(mValues.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);

@@ -28,6 +28,7 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -98,7 +99,7 @@ public class RecipeDetailFragment extends MvpAppCompatFragment {
 
         ButterKnife.bind(this, view);
 
-        ingredientsView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext(),
+        ingredientsView.setLayoutManager(new LinearLayoutManager(Objects.requireNonNull(activity).getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
         ingredientsView.setAdapter(new IngredientsAdapter(ingredients));

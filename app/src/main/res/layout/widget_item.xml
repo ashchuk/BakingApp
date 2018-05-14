@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/widget_ingredients_ll"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widget_ingredients_ll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -18,10 +17,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/margin_8dp"
             android:gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/text_size_18dp"
             android:textStyle="bold"
             tools:text="Recipe Name" />
     </LinearLayout>
@@ -34,9 +33,9 @@
             android:id="@+id/widget_recipe_detail_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textSize="16sp"
-            android:textColor="#000000"
+            android:layout_margin="@dimen/margin_8dp"
+            android:textColor="@color/black_color"
+            android:textSize="@dimen/text_size_18dp"
             tools:text="Ingredient Name" />
     </LinearLayout>
 

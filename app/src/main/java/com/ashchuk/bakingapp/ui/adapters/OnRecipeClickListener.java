@@ -1,6 +1,5 @@
 package com.ashchuk.bakingapp.ui.adapters;
 
-import android.os.Parcelable;
 import android.view.View;
 
 import com.ashchuk.bakingapp.mvp.models.Recipe;
