@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.ashchuk.bakingapp.ui.activities.RecipeDetailActivity;
 import com.ashchuk.bakingapp.ui.activities.RecipeListActivity;
 import com.ashchuk.bakingapp.ui.fragments.RecipeDetailFragment;
 import com.ashchuk.bakingapp.ui.viewholders.StepsViewHolder;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +78,15 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final StepsViewHolder holder, int position) {
         holder.mIdView.setText(mValues.get(position).getShortDescription());
+
+        if (!TextUtils.isEmpty(mValues.get(position).getThumbnailURL()))
+            Picasso
+                    .get()
+                    .load(mValues.get(position).getThumbnailURL())
+                    .noFade().resize(60, 60)
+                    .centerCrop()
+                    .into(holder.stepThumbnailIV);
+
         holder.itemView.setTag(mValues.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);
     }

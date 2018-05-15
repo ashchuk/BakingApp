@@ -34,13 +34,19 @@ import static org.hamcrest.Matchers.is;
 @RunWith(AndroidJUnit4.class)
 public class NavigateToRecipeDetailsActivityTest {
 
-    private int delay = 5000;
+    private int delay = 1000;
 
     @Rule
     public ActivityTestRule<RecipesActivity> mActivityTestRule = new ActivityTestRule<>(RecipesActivity.class);
 
     @Test
     public void navigateToRecipeDetailsActivityTest() {
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.recipes_rv),
                         childAtPosition(
@@ -55,6 +61,7 @@ public class NavigateToRecipeDetailsActivityTest {
                                     withClassName(is("android.widget.LinearLayout")),
                                     1)));
             recyclerView2.perform(actionOnItemAtPosition(0, click()));
+
             try {
                 Thread.sleep(delay);
             } catch (InterruptedException e) {
@@ -71,12 +78,11 @@ public class NavigateToRecipeDetailsActivityTest {
                             isDisplayed()));
             textView.check(matches(withText("Step details")));
         } else {
-
             ViewInteraction recyclerView2 = onView(
                     allOf(withId(R.id.recipe_list),
                             childAtPosition(
-                                    withId(R.id.frameLayout),
-                                    0)));
+                                    withId(R.id.recipe_detail_ll),
+                                    1)));
             recyclerView2.perform(actionOnItemAtPosition(0, click()));
 
             try {

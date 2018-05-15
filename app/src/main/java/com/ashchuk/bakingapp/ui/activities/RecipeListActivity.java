@@ -1,5 +1,6 @@
 package com.ashchuk.bakingapp.ui.activities;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -50,7 +51,7 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        if (findViewById(R.id.recipe_detail_container) != null)
+        if (isTablet())
             mTwoPane = true;
 
         setupRecyclerView((RecyclerView) recyclerView);
@@ -64,5 +65,9 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private boolean isTablet() {
+        return getResources().getBoolean(R.bool.isTablet);
     }
 }
