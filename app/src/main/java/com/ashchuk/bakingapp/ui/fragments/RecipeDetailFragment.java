@@ -181,8 +181,6 @@ public class RecipeDetailFragment extends MvpAppCompatFragment {
         if (savedInstanceState == null)
             shouldAutoPlay = true;
 
-
-
         Activity activity = this.getActivity();
 
         ButterKnife.bind(this, view);

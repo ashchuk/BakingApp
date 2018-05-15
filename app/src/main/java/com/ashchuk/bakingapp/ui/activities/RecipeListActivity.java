@@ -29,7 +29,6 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
     @BindView(R.id.recipe_list)
     View recyclerView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,19 +36,33 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
 
         ButterKnife.bind(this);
 
-        recipe = Objects.requireNonNull(getIntent().getExtras()).getParcelable(RECIPE_KEY);
+        try {
+            recipe = getIntent().getExtras().getParcelable(RECIPE_KEY);
+        } catch (NullPointerException ex) {
+            finish();
+        }
 
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         if (findViewById(R.id.recipe_detail_container) != null)
             mTwoPane = true;
 
-        assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new StepsAdapter(this, recipe.getSteps(), mTwoPane, recipe.getIngredients()));
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
