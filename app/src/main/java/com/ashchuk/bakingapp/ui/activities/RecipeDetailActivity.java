@@ -26,7 +26,8 @@ public class RecipeDetailActivity extends MvpAppCompatActivity implements Recipe
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
         if (savedInstanceState == null) {

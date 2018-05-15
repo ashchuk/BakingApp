@@ -8,4 +8,8 @@ public class Constants {
     public static final String STEP_KEY = "step";
     public static final String RECIPE_KEY = "recipe";
     public static final String INGREDIENTS_KEY = "recipe";
+
+    public static final String KEY_WINDOW = "window";
+    public static final String KEY_POSITION = "position";
+    public static final String KEY_AUTO_PLAY = "auto_play";
 }
