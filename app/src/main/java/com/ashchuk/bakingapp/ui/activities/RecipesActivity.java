@@ -1,6 +1,5 @@
 package com.ashchuk.bakingapp.ui.activities;
 
-import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.ContentValues;

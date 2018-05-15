@@ -1,6 +1,5 @@
 package com.ashchuk.bakingapp.ui.activities;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -38,7 +37,7 @@ public class RecipeListActivity extends MvpAppCompatActivity implements RecipeLi
         ButterKnife.bind(this);
 
         try {
-            recipe = getIntent().getExtras().getParcelable(RECIPE_KEY);
+            recipe = Objects.requireNonNull(getIntent().getExtras()).getParcelable(RECIPE_KEY);
         } catch (NullPointerException ex) {
             finish();
         }

@@ -17,7 +17,6 @@ import com.ashchuk.bakingapp.R;
 import com.ashchuk.bakingapp.mvp.models.Ingredient;
 import com.ashchuk.bakingapp.mvp.models.Step;
 import com.ashchuk.bakingapp.ui.adapters.IngredientsAdapter;
-import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;

@@ -1,7 +1,5 @@
 package com.ashchuk.bakingapp.test;
 
-import org.junit.Test;
-
 import static junit.framework.Assert.assertEquals;
 
 /**
